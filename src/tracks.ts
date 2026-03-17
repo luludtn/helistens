@@ -148,6 +148,15 @@ const TRACKS: Track[] = [
 
   // ── SUNFLOWER ──────────────────────────────────────────────────
   {
+    artist: "Teo Lucadamo, Escandaloso Xpósito", album: "UMG", tag: "Hip-Hop", flag: "🇪🇸",
+    cover: "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273e5d68d21fa5ae08101bf01e7",
+    url: "https://open.spotify.com/intl-fr/track/3AAt6LIE0EVBM810G4XMQe",
+    deezer: "", apple: "",
+    preview: "https://p.scdn.co/mp3-preview/f2c2b29f8c83eee2f1df0c8b3e08f5c2aa275dfd",
+    year: "2025", streams: "156,635", date: "17.03.26", start: 0,
+    tier: "sunflower",
+  },
+  {
     artist: "Mc Solaar", album: "Qui sème le vent récolte le tempo", tag: "French Hip-Hop", flag: "🇹🇩/🇫🇷",
     cover: "https://res.cloudinary.com/dzhvoacrg/image/upload/v1773581826/Mc_Solaar_zwwbg9.jpg",
     url: "https://open.spotify.com/intl-fr/track/44IouzBSiqKJoJbP7gkCzI",
