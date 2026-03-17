@@ -74,6 +74,15 @@ const TRACKS: Track[] = [
 
   // ── BEE ────────────────────────────────────────────────────────
   {
+    artist: "Shanae", album: "SHADAE FREESHTYLE", tag: "Hip-Hop", flag: "🇺🇸",
+    cover: "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273dfc907901329b81fbffa5311",
+    url: "https://open.spotify.com/intl-fr/track/1Ry2dktxmj2Wamoq0ZBEnV",
+    deezer: "", apple: "",
+    preview: "https://p.scdn.co/mp3-preview/580b5d5b86da6aee7dc2796cd280e2db088c3794",
+    year: "2024", streams: "54,810", date: "17.03.26", start: 0,
+    tier: "bee",
+  },
+  {
     artist: "Nic Clay", album: "Fly", tag: "R&B", flag: "🇺🇸",
     cover: "https://res.cloudinary.com/dzhvoacrg/image/upload/v1773577077/Nic_Clay_Fly_xgzqfw.jpg",
     url: "https://open.spotify.com/intl-fr/track/3j2VUykCoOeB8Q7YHySdk0",
@@ -151,7 +160,7 @@ const TRACKS: Track[] = [
     artist: "Teo Lucadamo, Escandaloso Xpósito", album: "UMG", tag: "Hip-Hop", flag: "🇪🇸",
     cover: "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273e5d68d21fa5ae08101bf01e7",
     url: "https://open.spotify.com/intl-fr/track/3AAt6LIE0EVBM810G4XMQe",
-    deezer: "", apple: "",
+    deezer: "https://www.deezer.com/album/692031871", apple: "https://music.apple.com/album/1786463040",
     preview: "https://p.scdn.co/mp3-preview/f2c2b29f8c83eee2f1df0c8b3e08f5c2aa275dfd",
     year: "2025", streams: "156,635", date: "17.03.26", start: 0,
     tier: "sunflower",
@@ -169,7 +178,7 @@ const TRACKS: Track[] = [
     artist: "MMM & Tshetsha Boys", album: "Shangaan Shake", tag: "Shangaan Electro", flag: "🇿🇦",
     cover: "https://res.cloudinary.com/dzhvoacrg/image/upload/v1773582723/Shangaan_Shake_eknbmb.webp",
     url: "https://open.spotify.com/intl-fr/track/3cnDUZXt0mqpsHulp03aTC",
-    deezer: "", apple: "https://music.apple.com/album/500090543?i=500090546",
+    deezer: "https://www.deezer.com/album/61691742", apple: "https://music.apple.com/album/500090543?i=500090546",
     preview: "https://p.scdn.co/mp3-preview/c9d8f016e969475f9dfde47aee28f0012217a639",
     year: "2012", streams: "145,647", date: "15.03.26", start: 213,
     tier: "sunflower",
@@ -234,7 +243,7 @@ const TRACKS: Track[] = [
     artist: "Peter Cat Recording Co.", album: "Bismillah", tag: "UK Garage", flag: "🇬🇧",
     cover: "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273db88abf0fe30030cf30c3a87",
     url: "https://open.spotify.com/intl-fr/track/5AUk5VM0yWmYkt0fx1vJMG",
-    deezer: "", apple: "",
+    deezer: "https://www.deezer.com/track/937351902", apple: "https://music.apple.com/album/1509634619",
     preview: "https://p.scdn.co/mp3-preview/9fe648806941512b82f73118cc29662756d1cd98",
     year: "", streams: "", date: "", start: 0,
     tier: "joker",
