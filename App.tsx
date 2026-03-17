@@ -14,6 +14,7 @@ import { Audio, AVPlaybackStatus } from 'expo-av';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import { shuffleTracks, TIER_LABELS, TIER_RANGES, Track } from './src/tracks';
+import { fetchAllPreviews } from './src/spotify';
 
 const { width: SW, height: SH } = Dimensions.get('window');
 const PREVIEW_DURATION = 30_000; // 30s in ms
@@ -38,6 +39,8 @@ function AppleIcon({ size = 18, color = '#fc3c44' }) {
 
 export default function App() {
   const [tracks] = useState<Track[]>(() => shuffleTracks());
+  const [previews, setPreviews] = useState<Record<string, string>>({});
+  const [loadingPreviews, setLoadingPreviews] = useState(true);
   const [idx, setIdx] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0); // 0–1
@@ -47,8 +50,18 @@ export default function App() {
   const coverAnim = useRef(new Animated.Value(1)).current;
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Fetch live preview URLs from Spotify API on mount
+  useEffect(() => {
+    const urls = tracks.map(t => t.url).filter(Boolean);
+    fetchAllPreviews(urls)
+      .then(map => { setPreviews(map); setLoadingPreviews(false); })
+      .catch(() => { setLoadingPreviews(false); }); // fall back to hardcoded previews
+  }, []);
+
   const track = tracks[idx];
   const tierColor = TIER_COLORS[track.tier];
+  // Use live preview if available, fall back to hardcoded one in tracks.ts
+  const previewUrl = previews[track.url] ?? track.preview;
 
   // ── cleanup ──────────────────────────────────────────────────────────────
   const stopAndUnload = useCallback(async () => {
@@ -70,17 +83,18 @@ export default function App() {
   }, [coverAnim]);
 
   // ── load + play a track ──────────────────────────────────────────────────
-  const playTrack = useCallback(async (t: Track) => {
+  const playTrack = useCallback(async (t: Track, livePreview?: string) => {
     await stopAndUnload();
     animateCover();
 
-    if (!t.preview) { setIsPlaying(false); return; }
+    const uri = livePreview ?? previews[t.url] ?? t.preview;
+    if (!uri) { setIsPlaying(false); return; }
 
     try {
       await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
       const { sound } = await Audio.Sound.createAsync(
-        { uri: t.preview },
-        { shouldPlay: true, positionMillis: t.start * 1000 },
+        { uri },
+        { shouldPlay: true, positionMillis: 0 },
       );
       soundRef.current = sound;
       setIsPlaying(true);
@@ -88,7 +102,7 @@ export default function App() {
       // progress ticker
       sound.setOnPlaybackStatusUpdate((status: AVPlaybackStatus) => {
         if (!status.isLoaded) return;
-        const elapsed = Math.max(0, (status.positionMillis ?? 0) - t.start * 1000);
+        const elapsed = status.positionMillis ?? 0;
         const pct = Math.min(elapsed / PREVIEW_DURATION, 1);
         setProgress(pct);
         progressAnim.setValue(pct);
@@ -157,6 +171,15 @@ export default function App() {
   function openLink(u: string) { if (u) Linking.openURL(u); }
 
   // ── render ───────────────────────────────────────────────────────────────
+  if (loadingPreviews) {
+    return (
+      <View style={[styles.root, { alignItems: 'center', justifyContent: 'center' }]}>
+        <StatusBar style="light" />
+        <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11, letterSpacing: 2, textTransform: 'uppercase' }}>loading…</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.root}>
       <StatusBar style="light" />
