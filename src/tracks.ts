@@ -222,6 +222,15 @@ const TRACKS: Track[] = [
 
   // ── JOKER ──────────────────────────────────────────────────────
   {
+    artist: "Peter Cat Recording Co.", album: "Bismillah", tag: "UK Garage", flag: "🇬🇧",
+    cover: "https://image-cdn-ak.spotifycdn.com/image/ab67616d0000b273db88abf0fe30030cf30c3a87",
+    url: "https://open.spotify.com/intl-fr/track/5AUk5VM0yWmYkt0fx1vJMG",
+    deezer: "", apple: "",
+    preview: "https://p.scdn.co/mp3-preview/9fe648806941512b82f73118cc29662756d1cd98",
+    year: "", streams: "", date: "", start: 0,
+    tier: "joker",
+  },
+  {
     artist: "Laid Back", album: "Fly Away / Walking in the Sunshine", tag: "Jazz-Funk", flag: "🇧🇷",
     cover: "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e020c98dd7d3951d489df53b08e",
     url: "https://open.spotify.com/intl-fr/track/39HnpKxGPzP3EUlXvs4VBQ",
